@@ -52,8 +52,10 @@ def edit_table(df, sde_table, fieldnames=None,
                     if pd.isna(rowlist[j][k]):
                         strvar = "NULL"
                     # if number, no commas in SQL
-                    elif isinstance(rowlist[j][k], (int, float)):
-                        strvar = "{:}".format(rowlist[j][k])
+                    elif isinstance(rowlist[j][k], (int)):
+                        strvar = "{:0.0f}".format(rowlist[j][k])
+                    elif isinstance(rowlist[j][k], (float)):
+                        strvar = "{:0.4f}".format(rowlist[j][k])
                     # if string, add commas around sql text
                     else:
                         strvar = "'{:}'".format(rowlist[j][k])

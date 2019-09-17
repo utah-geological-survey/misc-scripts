@@ -51,6 +51,8 @@ def edit_table(df, sde_table, fieldnames=None,
                     # if null replace python None with string NULL
                     if pd.isna(rowlist[j][k]):
                         strvar = "NULL"
+                    elif rowlist[j][k]:
+                        strvar = "NULL"
                     # if number, no commas in SQL
                     elif isinstance(rowlist[j][k], (int)):
                         strvar = "{:0.0f}".format(rowlist[j][k])

@@ -1,4 +1,8 @@
 def calc_wat_year(df):
+  df.loc[:,'month'] = df.index.month
+  df.loc[:,'year'] = df.index.year
+  df.loc[:,'doy'] = df.index.dayofyear
+  
   df['water year'] = df.index.shift(-9,freq='M').year+1
   df['ones'] = 1
   df['water year doy'] = df['ones'].groupby(df['water year']).cumsum()
